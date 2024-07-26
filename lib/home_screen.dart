@@ -31,7 +31,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ],
           bottom: const TabBar(
-            indicatorColor: Color.fromARGB(103, 33, 149, 243),
+            indicatorColor: Color.fromARGB(103, 174, 190, 203),
             tabs: [
               Tab(text: 'Card'),
               Tab(text: 'Input'),

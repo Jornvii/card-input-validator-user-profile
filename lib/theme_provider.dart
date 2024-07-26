@@ -16,10 +16,10 @@ class ThemeProvider extends ChangeNotifier {
 class AppTheme {
   static final ThemeData light = ThemeData(
     brightness: Brightness.light,
-    primarySwatch: Colors.blue,
+    primarySwatch: Colors.green,
     scaffoldBackgroundColor: Colors.white,
     appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.blue,
+      backgroundColor: Color.fromARGB(127, 76, 175, 79),
     ),
     cardColor: Colors.white,
     textTheme: const TextTheme(

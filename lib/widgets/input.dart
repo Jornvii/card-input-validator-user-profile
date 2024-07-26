@@ -3,8 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-
-
 class StudentRegistrationPage extends StatefulWidget {
   const StudentRegistrationPage({super.key});
 
@@ -22,6 +20,7 @@ class _StudentRegistrationPageState extends State<StudentRegistrationPage> {
   String? _gender;
   bool _agreedToTerms = false;
   File? _profileImage;
+  bool _isHovering = false;
 
   final List<String> _courses = ['Science', 'Arts', 'Commerce'];
 
@@ -33,10 +32,8 @@ class _StudentRegistrationPageState extends State<StudentRegistrationPage> {
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
-        
         child: Center(
           child: SizedBox(
-            
             width: 700,
             child: Form(
               key: _formKey,
@@ -93,9 +90,18 @@ class _StudentRegistrationPageState extends State<StudentRegistrationPage> {
                     onChanged: (value) => setState(() => _agreedToTerms = value!),
                   ),
                   const SizedBox(height: 16),
-                  ElevatedButton(
-                    onPressed: _submitForm,
-                    child: const Text('Register'),
+                  MouseRegion(
+                    onEnter: (_) => setState(() => _isHovering = true),
+                    onExit: (_) => setState(() => _isHovering = false),
+                    child: ElevatedButton(
+                      onPressed: _submitForm,
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        textStyle: const TextStyle(fontSize: 18),
+                        backgroundColor: _isHovering ? const Color.fromARGB(129, 68, 137, 255) : const Color.fromARGB(127, 33, 149, 243),
+                      ),
+                      child: const Text('Register'),
+                    ),
                   ),
                 ],
               ),
@@ -235,11 +241,11 @@ class _StudentRegistrationPageState extends State<StudentRegistrationPage> {
         return;
       }
       _formKey.currentState!.save();
-      _showDialog('Registration successful!');
+      _showDialog('Registration successful!', success: true);
     }
   }
 
-  void _showDialog(String message) {
+  void _showDialog(String message, {bool success = false}) {
     showDialog<void>(
       context: context,
       builder: (BuildContext context) {
@@ -251,6 +257,9 @@ class _StudentRegistrationPageState extends State<StudentRegistrationPage> {
               child: const Text('OK'),
               onPressed: () {
                 Navigator.of(context).pop();
+                if (success) {
+                  Navigator.of(context).pushReplacementNamed('/read');
+                }
               },
             ),
           ],
