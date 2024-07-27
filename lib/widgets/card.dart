@@ -58,8 +58,8 @@ class CardWidget extends StatelessWidget {
     );
   }
 
-  Padding secCard(BuildContext context, bool isLightMode,
-      Color headerColor, List<Article> articles) {
+  Padding secCard(BuildContext context, bool isLightMode, Color headerColor,
+      List<Article> articles) {
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Container(
@@ -112,13 +112,12 @@ class CardWidget extends StatelessWidget {
     );
   }
 
-  Padding topCard(
-      BuildContext context, bool isLightMode, Color headerColor) {
+  Padding topCard(BuildContext context, bool isLightMode, Color headerColor) {
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Container(
         width: 300,
-        height: 300,
+        height: 350,
         decoration: BoxDecoration(
           color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.circular(10),
@@ -163,12 +162,22 @@ class CardWidget extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 8),
+                  ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.network(
+                          "https://www.wfla.com/wp-content/uploads/sites/71/2023/05/GettyImages-1389862392.jpg?w=2560&h=1440&crop=1")),
+                  const SizedBox(height: 8),
                   Text(
                     '#1 updated on Feb 2',
                     style: TextStyle(
                       color: Theme.of(context).textTheme.bodySmall?.color,
                     ),
                   ),
+                  ElevatedButton(
+                      onPressed: () {},
+                      child: Row(
+                        children: [Text("Read More")],
+                      ))
                 ],
               ),
             ),
