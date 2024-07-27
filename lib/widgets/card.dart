@@ -32,7 +32,9 @@ class CardWidget extends StatelessWidget {
     ];
 
     return SingleChildScrollView(
+      scrollDirection:Axis.vertical,
       child: Column(
+        
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -62,7 +64,7 @@ class CardWidget extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       child: Container(
         width: 1200,
-        height: 600,
+        // height: 600,
         decoration: BoxDecoration(
           color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.circular(10),
